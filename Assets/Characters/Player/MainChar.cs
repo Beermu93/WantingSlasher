@@ -9,20 +9,13 @@ using Unity.VisualScripting;
 public class MainChar : BaseCharacter, IDamageable
 {
     Interaction interaction;
+    [SerializeField] private PlayerData playerData;
 
-    public KeyCode meleeAttackKey = KeyCode.Mouse0;
-    public KeyCode rangeAttackKey = KeyCode.Mouse1;
-    public KeyCode jumpKey = KeyCode.Space;
     public string xAxis = "Horizontal";
 
     public Transform attackPoint = null;
     public Transform rangeAttackPoint = null;
     public GameObject bullet = null;
-    public float meleeAttackRadius = 0.6f;
-    public float meleeDamage = 2f;
-    public float meleeAttackDelay = 1.1f;
-    public float rangeAttackDelay = 0.3f;
-    public LayerMask enemyLayer = 8;
 
     private float moveOnX = 0f;
     private bool jump = false;
@@ -52,7 +45,7 @@ public class MainChar : BaseCharacter, IDamageable
         Debug.DrawRay(transform.position, -Vector2.up * groundedFloor, Color.yellow);
         if (attackPoint != null) 
         {
-            Gizmos.DrawWireSphere(attackPoint.position, meleeAttackRadius);
+            Gizmos.DrawWireSphere(attackPoint.position, playerData.MeleeAttackRadius);
         }
     }
 
@@ -64,9 +57,9 @@ public class MainChar : BaseCharacter, IDamageable
     private void GetInputs()
     {
         moveOnX = Input.GetAxis(xAxis);
-        meleeAttack = Input.GetKeyDown(meleeAttackKey);
-        rangeAttack = Input.GetKeyDown(rangeAttackKey);
-        jump = Input.GetKeyDown(jumpKey);
+        meleeAttack = Input.GetKeyDown(playerData.MeleeAttackKey);
+        rangeAttack = Input.GetKeyDown(playerData.RangeAttackKey);
+        jump = Input.GetKeyDown(playerData.JumpKey);
     }
 
     private void DoRun()
@@ -95,17 +88,17 @@ public class MainChar : BaseCharacter, IDamageable
     {
         if (meleeAttack && untilMeleeAttackReady <= 0)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(attackPoint.position, meleeAttackRadius, enemyLayer);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(attackPoint.position, playerData.MeleeAttackRadius, playerData.EnemyLayer);
             for (int i = 0; i < colliders.Length; i++)
             {
                 IDamageable enemies = colliders[i].GetComponent<IDamageable>();
                 if (enemies != null)
                 {
-                    enemies.ApplyDamage(meleeDamage);
+                    enemies.ApplyDamage(playerData.MeleeDamage);
                 }
             }
 
-            untilMeleeAttackReady = meleeAttackDelay;
+            untilMeleeAttackReady = playerData.MeleeAttackDelay;
         }
         else
         {
@@ -117,9 +110,8 @@ public class MainChar : BaseCharacter, IDamageable
     {
         if (rangeAttack && untilRangeAttackReady <= 0)
         {
-            Debug.Log("asdasd");
             Instantiate(bullet, rangeAttackPoint.position, rangeAttackPoint.rotation);
-            untilRangeAttackReady = rangeAttackDelay;
+            untilRangeAttackReady = playerData.RangeAttackDelay;
         }
         else
         {
@@ -166,7 +158,7 @@ public class MainChar : BaseCharacter, IDamageable
     {
         Animator.SetTrigger("Attack");
         isMeleeAttacking = true;
-        yield return new WaitForSeconds(meleeAttackDelay);
+        yield return new WaitForSeconds(playerData.MeleeAttackDelay);
         isMeleeAttacking = false;
     }
     public virtual void ApplyDamage(float damage)

@@ -191,20 +191,11 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   groundedFloor: 0.8
-  meleeAttackKey: 323
-  rangeAttackKey: 324
-  jumpKey: 32
+  playerData: {fileID: 11400000, guid: 5f194bcb89af3644cbc61a17e94b3599, type: 2}
   xAxis: Horizontal
   attackPoint: {fileID: 8994877263439701242}
   rangeAttackPoint: {fileID: 7158931379074874851}
   bullet: {fileID: 1488211955538985183, guid: aca2a986137418f4486561b8fb971110, type: 3}
-  meleeAttackRadius: 0.5
-  meleeDamage: 2
-  meleeAttackDelay: 1.1
-  rangeAttackDelay: 0.3
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 264
 --- !u!114 &2111346432419970898
 MonoBehaviour:
   m_ObjectHideFlags: 0

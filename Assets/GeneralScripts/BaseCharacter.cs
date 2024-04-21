@@ -46,11 +46,6 @@ public class BaseCharacter : MonoBehaviour
         currentHealth = health;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     protected bool CheckGrounded()
     {
         return Physics2D.Raycast(transform.position, -Vector2.up, groundedFloor);
