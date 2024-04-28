@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class MainChar : BaseCharacter, IDamageable
 {
-    Interaction interaction;
+    //Interaction interaction;
     [SerializeField] private PlayerData playerData;
 
     public string xAxis = "Horizontal";
@@ -34,10 +34,10 @@ public class MainChar : BaseCharacter, IDamageable
         DoRangedAttack();
         DoAnimations();
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            interaction.DoInteraction();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    interaction.DoInteraction();
+        //}
     }
 
     private void OnDrawGizmosSelected()
