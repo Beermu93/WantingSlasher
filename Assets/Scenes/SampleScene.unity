@@ -3173,6 +3173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingEye
       objectReference: {fileID: 0}
+    - target: {fileID: 7024386531539505678, guid: 3925189c8cd8d6e4db87c3135e7580e5, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 1488211955538985183, guid: 4254635b040e8eb4db6ba4206eb52da8, type: 3}
     - target: {fileID: 7996422253365738632, guid: 3925189c8cd8d6e4db87c3135e7580e5, type: 3}
       propertyPath: m_RootOrder
       value: 7

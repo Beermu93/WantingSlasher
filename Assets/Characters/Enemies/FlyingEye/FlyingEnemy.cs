@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemy : MonoBehaviour
+public class FlyingEnemy : MonoBehaviour, IDamageable
 {
-    public float health = 100;
+    public float health = 10f;
     public float speed;
     public bool chase = false;
     private bool shoot;
@@ -95,7 +95,7 @@ public class FlyingEnemy : MonoBehaviour
             chase = false;
         }
     }
-    public void TakeDamage(float damage)
+    public virtual void ApplyDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
