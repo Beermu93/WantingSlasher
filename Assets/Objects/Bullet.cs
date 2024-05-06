@@ -6,9 +6,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rb2D = null;
-    public float speed = 15f;
-    public float damage = 0.5f;
-    public float delaySeconds = 1.5f;
+    [SerializeField] private float speed = 15f;
+    [SerializeField] private float damage = 0.5f;
+    [SerializeField] private float delaySeconds = 1.5f;
 
     private WaitForSeconds delay = null;
 
@@ -19,12 +19,6 @@ public class Bullet : MonoBehaviour
         StartCoroutine(missed());
 
         rb2D.velocity = transform.right * speed;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
