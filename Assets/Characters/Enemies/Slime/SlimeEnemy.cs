@@ -4,25 +4,18 @@ using UnityEngine;
 
 public class SlimeEnemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float speed;
-    [SerializeField] private float health = 100;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float bulletSpeed = 15f;
-    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private float health = 10;
     private float timeNow;
     [SerializeField] private bool alive = true;
-    private Animator enemyAni;
 
     [SerializeField] private GameObject player;
-    [SerializeField] private float distanceBetween;
+    [SerializeField] private SlimeData slimeData;
+    [SerializeField] private Animator enemyAni;
     [SerializeField] private float distance;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-
         enemyAni = GetComponent<Animator>();
     }
 
@@ -43,17 +36,17 @@ public class SlimeEnemy : MonoBehaviour, IDamageable
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance < distanceBetween)
+        if (distance < slimeData.DistanceBetween)
         {
 
             timeNow += Time.deltaTime;
-            if (timeNow > fireRate)
+            if (timeNow > slimeData.FireRate)
             {
-                var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-                bullet.GetComponent<Rigidbody2D>().velocity = transform.right * bulletSpeed;
+                var bullet = Instantiate(slimeData.BulletPrefab, transform.position, transform.rotation);
+                bullet.GetComponent<Rigidbody2D>().velocity = transform.right * slimeData.BulletSpeed;
                 timeNow = 0;
             }
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), slimeData.Speed * Time.deltaTime);
             if (player.transform.position.x < transform.position.x)
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);

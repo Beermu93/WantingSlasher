@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [SerializeField] private KeyCode meleeAttackKey = KeyCode.Mouse0;
-    [SerializeField]  private KeyCode rangeAttackKey = KeyCode.Mouse1;
+    [SerializeField] private KeyCode rangeAttackKey = KeyCode.Mouse1;
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
 
     [SerializeField] private float meleeAttackRadius = 0.6f;

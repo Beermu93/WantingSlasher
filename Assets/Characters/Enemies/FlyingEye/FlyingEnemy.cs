@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class FlyingEnemy : MonoBehaviour, IDamageable
 {
-    public float health = 10f;
-    public float speed;
-    public bool chase = false;
+    [SerializeField] private float health = 10f;
+    [SerializeField] private bool chase = false;
     private bool shoot;
-    public bool alive = true;
-    private GameObject player;
-    public Collider2D chaseCollider;
-    public GameObject bulletPrefab;
-    public float bulletSpeed;
+    [SerializeField] private bool alive = true;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Collider2D chaseCollider;
+    [SerializeField] private float speed;
 
+    [SerializeField] private FlyingData flygingData;
     [SerializeField] private Animator enemyAnimator;
 
     // Start is called before the first frame update
@@ -75,8 +74,8 @@ public class FlyingEnemy : MonoBehaviour, IDamageable
 
     private void shooting()
     {
-        var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        Vector2 dir = (player.transform.position - transform.position).normalized * bulletSpeed;
+        var bullet = Instantiate(flygingData.BulletPrefab, transform.position, transform.rotation);
+        Vector2 dir = (player.transform.position - transform.position).normalized * flygingData.BulletSpeed;
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(dir.x, dir.y);
     }
 

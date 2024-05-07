@@ -158,13 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9ac63f46459d248a5cfb0d5c321bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  speed: 1
   health: 5
-  bulletPrefab: {fileID: 1488211955538985183, guid: 4254635b040e8eb4db6ba4206eb52da8, type: 3}
-  bulletSpeed: 10
-  fireRate: 0.5
   alive: 1
-  player: {fileID: 0}
-  distanceBetween: 5
+  player: {fileID: 8867024179364875132, guid: db0ce93e41fcb0d4aa2f48d4c572de7a, type: 3}
+  slimeData: {fileID: 11400000, guid: 67f5793b9c1981345bc3f875be19262b, type: 2}
+  enemyAni: {fileID: 517509545099491161}
   distance: 0

@@ -160,12 +160,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 3
   chase: 0
   alive: 1
+  player: {fileID: 8867024179364875132, guid: db0ce93e41fcb0d4aa2f48d4c572de7a, type: 3}
   chaseCollider: {fileID: 7396886875633796007}
-  bulletPrefab: {fileID: 1488211955538985183, guid: aca2a986137418f4486561b8fb971110, type: 3}
-  bulletSpeed: 8
+  speed: 3
+  flygingData: {fileID: 11400000, guid: 63373de7b3f363649bcd343c00a5e8ae, type: 2}
   enemyAnimator: {fileID: 7652983499700947721}
 --- !u!1 &3725391994060313048
 GameObject:

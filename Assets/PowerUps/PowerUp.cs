@@ -6,11 +6,10 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     private MainChar player = null;
+    private SoldierCombat soldier = null;
 
-    public MainChar Player
-    {
-        get { return player; }
-    }
+    public MainChar Player => player;
+    public SoldierCombat Soldier => soldier;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +18,10 @@ public class PowerUp : MonoBehaviour
             if(collision.GetComponent<MainChar>())
             {
                 player = collision.GetComponent<MainChar>();
+            }
+            if (collision.GetComponent<SoldierCombat>())
+            {
+                soldier = collision.GetComponent<SoldierCombat>();
             }
             Activate();
         }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SkeletonEnemy : MonoBehaviour, IDamageable
 {
-    public float health = 100;
-    public float speed;
-    public bool chase = false;
+    [SerializeField] private float health = 20;
+    [SerializeField] private float speed;
+    [SerializeField] private bool chase = false;
     private bool attack;
-    public bool alive = true;
+    [SerializeField] private bool alive = true;
 
-    private GameObject player;
+    [SerializeField] private GameObject player;
     public Collider2D chaseCollider;
 
     [SerializeField] private Animator enemyAnimator;
