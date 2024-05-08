@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BaseCharacter : MonoBehaviour
 {
-    public float health = 10f;
+    public float health = 25f;
 
     public float speed = 5f;
     public float jumpForce = 5f;
-    public float groundedFloor = 5f;
+    public float groundedFloor;
+    public LayerMask ground;
 
     private Rigidbody2D rb2D = null;
     private Animator animator = null;
@@ -30,7 +31,6 @@ public class BaseCharacter : MonoBehaviour
         set { currentHealth = value; }
     }
 
-    // Start is called before the first frame update
     void Awake()
     {
         if (GetComponent<Rigidbody2D>())
@@ -48,7 +48,7 @@ public class BaseCharacter : MonoBehaviour
 
     protected bool CheckGrounded()
     {
-        return Physics2D.Raycast(transform.position, -Vector2.up, groundedFloor);
+        return Physics2D.Raycast(transform.position, -Vector2.up, groundedFloor, ground);
     }
     protected virtual void Die()
     {

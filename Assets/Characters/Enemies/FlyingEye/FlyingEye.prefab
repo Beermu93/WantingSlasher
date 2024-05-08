@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7024386531539505678}
   m_Layer: 8
   m_Name: FlyingEye
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   health: 10
   chase: 0
   alive: 1
-  player: {fileID: 8867024179364875132, guid: db0ce93e41fcb0d4aa2f48d4c572de7a, type: 3}
+  player: {fileID: 6323719953710832613, guid: 39753da02cfd67d41bb22902ec1490d6, type: 3}
   chaseCollider: {fileID: 7396886875633796007}
   speed: 3
   flygingData: {fileID: 11400000, guid: 63373de7b3f363649bcd343c00a5e8ae, type: 2}

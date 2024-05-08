@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemy : BaseEnemy, IDamageable
+public class FlyingEnemy : BaseEnemy
 {
-    [SerializeField] private float health = 10f;
     [SerializeField] private bool chase = false;
     private bool shoot;
-    [SerializeField] private bool alive = true;
     [SerializeField] private GameObject player;
     [SerializeField] private Collider2D chaseCollider;
     [SerializeField] private float speed;
@@ -18,6 +16,7 @@ public class FlyingEnemy : BaseEnemy, IDamageable
     // Start is called before the first frame update
     void Start()
     {
+        health = 10f;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -92,14 +91,6 @@ public class FlyingEnemy : BaseEnemy, IDamageable
         if (collision.CompareTag("Player"))
         {
             chase = false;
-        }
-    }
-    public virtual void ApplyDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            alive = false;
         }
     }
 }

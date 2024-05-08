@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonEnemy : BaseEnemy, IDamageable
+public class SkeletonEnemy : BaseEnemy
 {
-    [SerializeField] private float health = 20;
     [SerializeField] private float speed;
     [SerializeField] private bool chase = false;
     private bool attack;
-    [SerializeField] private bool alive = true;
 
     [SerializeField] private GameObject player;
     public Collider2D chaseCollider;
@@ -18,6 +16,7 @@ public class SkeletonEnemy : BaseEnemy, IDamageable
     // Start is called before the first frame update
     void Start()
     {
+        health = 20f;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -53,7 +52,7 @@ public class SkeletonEnemy : BaseEnemy, IDamageable
     {
         transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, player.transform.position) <= 3f)
+        if (Vector2.Distance(transform.position, player.transform.position) <= 2f)
         {
             attack = true;
             speed = 0;
@@ -92,14 +91,6 @@ public class SkeletonEnemy : BaseEnemy, IDamageable
         if (collision.CompareTag("Player"))
         {
             chase = false;
-        }
-    }
-    public void ApplyDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            alive = false;
         }
     }
 }

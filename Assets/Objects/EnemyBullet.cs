@@ -25,6 +25,10 @@ public class EnemyBullet : MonoBehaviour
 
             gameObject.SetActive(false);
             Destroy(gameObject);
+        } else if(collision.gameObject.layer == 11)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

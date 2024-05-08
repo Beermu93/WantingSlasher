@@ -16,7 +16,10 @@ public class AttackController : MonoBehaviour
         {
             if (obj.CompareTag("Player"))
             {
-                obj.transform.GetComponent<MainChar>().ApplyDamage(daño);
+                if (!obj.CompareTag("Shield"))
+                {
+                    obj.transform.GetComponent<PlayerMovement>().ApplyDamage(daño);
+                }
             }
         }
     }

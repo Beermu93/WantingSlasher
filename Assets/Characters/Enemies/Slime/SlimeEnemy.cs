@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeEnemy : BaseEnemy, IDamageable
+public class SlimeEnemy : BaseEnemy
 {
-    [SerializeField] private float health = 10;
     private float timeNow;
-    [SerializeField] private bool alive = true;
-
     [SerializeField] private GameObject player;
     [SerializeField] private SlimeData slimeData;
     [SerializeField] private Animator enemyAni;
@@ -16,7 +13,9 @@ public class SlimeEnemy : BaseEnemy, IDamageable
     // Start is called before the first frame update
     void Start()
     {
+        health = 10f;
         enemyAni = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -55,15 +54,6 @@ public class SlimeEnemy : BaseEnemy, IDamageable
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-        }
-    }
-
-    public void ApplyDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            alive = false;
         }
     }
 }
