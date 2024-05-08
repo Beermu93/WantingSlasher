@@ -25,6 +25,8 @@ public class PlayerMovement : BaseCharacter, IDamageable
     private void FixedUpdate()
     {
         DoRun();
+        float horizontal = UnityEngine.Input.GetAxis(xAxis);
+        Movement(horizontal);
     }
 
     private void GetInputs()
@@ -50,6 +52,13 @@ public class PlayerMovement : BaseCharacter, IDamageable
         }
 
         Rb2D.velocity = new Vector2(moveOnX * speed, Rb2D.velocity.y);
+    }
+
+    public void Movement(float horizontal)
+    {
+        Vector3 movementInput = new Vector2(horizontal, 0f).normalized;
+        var movementCommand = new MovementCommand(movementInput, speed, transform, Time.deltaTime);
+        EventQueue.Instance.QueueCommand(movementCommand);
     }
 
     private void DoJump()

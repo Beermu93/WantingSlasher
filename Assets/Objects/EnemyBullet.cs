@@ -17,10 +17,11 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collision.gameObject.layer == 9)
         {
+            PlayerMovement soldier = collision.gameObject.GetComponent<PlayerMovement>();
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-            if (damageable != null)
+            if (damageable != null && soldier != null)
             {
-                damageable.ApplyDamage(damage);
+                soldier.ApplyDamage(damage);
             }
 
             gameObject.SetActive(false);

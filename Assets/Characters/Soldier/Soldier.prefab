@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 5
+  speed: 4
   jumpForce: 5
   groundedFloor: 5
   ground:

@@ -9,8 +9,8 @@ public class PowerUp_Heal : PowerUp
 
     public override void Activate()
     {
-        Player.CurrentHealth += amount;
-        Debug.Log("Player: " + Player.CurrentHealth);
+        Soldier.CurrentHealth += amount;
+        Debug.Log("Player recieved " + Soldier.CurrentHealth + "health");
 
         base.Activate();
     }

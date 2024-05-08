@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    private MainChar player = null;
-    private SoldierCombat soldier = null;
+    private PlayerMovement soldier = null;
+    private SoldierCombat combo = null;
 
-    public MainChar Player => player;
-    public SoldierCombat Soldier => soldier;
+    public PlayerMovement Soldier => soldier;
+    public SoldierCombat Combo => combo;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            if(collision.GetComponent<MainChar>())
+            if (collision.GetComponent<PlayerMovement>())
             {
-                player = collision.GetComponent<MainChar>();
+                soldier = collision.GetComponent<PlayerMovement>();
             }
             if (collision.GetComponent<SoldierCombat>())
             {
-                soldier = collision.GetComponent<SoldierCombat>();
+                combo = collision.GetComponent<SoldierCombat>();
             }
             Activate();
         }

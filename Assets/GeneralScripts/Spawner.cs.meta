@@ -3,7 +3,11 @@ guid: 82276c4a26d14c34ab84723555eba576
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - slime: {fileID: 3963839695467002885, guid: 7fc4877626092ca45829a97e411b8509, type: 3}
+  - eye: {fileID: 1352168283587233753, guid: 3925189c8cd8d6e4db87c3135e7580e5, type: 3}
+  - skeleton: {fileID: 3552751631454424691, guid: 8fbaa886b8df2014f9c25da7a0f18160, type: 3}
+  - finalBoss: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
