@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonEnemy : MonoBehaviour, IDamageable
+public class SkeletonEnemy : BaseEnemy, IDamageable
 {
     [SerializeField] private float health = 20;
     [SerializeField] private float speed;
@@ -101,9 +101,5 @@ public class SkeletonEnemy : MonoBehaviour, IDamageable
         {
             alive = false;
         }
-    }
-    public void death()
-    {
-        Destroy(gameObject);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeEnemy : MonoBehaviour, IDamageable
+public class SlimeEnemy : BaseEnemy, IDamageable
 {
     [SerializeField] private float health = 10;
     private float timeNow;
@@ -65,10 +65,5 @@ public class SlimeEnemy : MonoBehaviour, IDamageable
         {
             alive = false;
         }
-    }
-
-    public void death()
-    {
-        Destroy(gameObject);
     }
 }

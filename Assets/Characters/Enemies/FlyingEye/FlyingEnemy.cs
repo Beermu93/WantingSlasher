@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemy : MonoBehaviour, IDamageable
+public class FlyingEnemy : BaseEnemy, IDamageable
 {
     [SerializeField] private float health = 10f;
     [SerializeField] private bool chase = false;
@@ -101,9 +101,5 @@ public class FlyingEnemy : MonoBehaviour, IDamageable
         {
             alive = false;
         }
-    }
-    public void death()
-    {
-        Destroy(gameObject);
     }
 }
