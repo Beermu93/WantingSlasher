@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseCharacter : MonoBehaviour
+public class BaseCharacter : MonoBehaviour, IDamageable
 {
     public float health = 25f;
 
@@ -54,5 +54,14 @@ public class BaseCharacter : MonoBehaviour
     {
         gameObject.SetActive(false);
         Destroy(gameObject);
+    }
+
+    public virtual void ApplyDamage(float damage)
+    {
+        CurrentHealth -= damage;
+        if (CurrentHealth <= 0)
+        {
+            Die();
+        }
     }
 }

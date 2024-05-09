@@ -18,8 +18,8 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.layer == 9)
         {
             PlayerMovement soldier = collision.gameObject.GetComponent<PlayerMovement>();
-            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-            if (damageable != null && soldier != null)
+            //IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            if (soldier is BaseCharacter)
             {
                 soldier.ApplyDamage(damage);
             }

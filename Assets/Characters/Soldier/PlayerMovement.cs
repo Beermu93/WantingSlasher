@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
 
-public class PlayerMovement : BaseCharacter, IDamageable
+public class PlayerMovement : BaseCharacter
 {
     [SerializeField] private SoldierData soldierData;
 
@@ -20,13 +20,13 @@ public class PlayerMovement : BaseCharacter, IDamageable
 
         DoJump();
         DoAnimations();
+        float horizontal = UnityEngine.Input.GetAxis(xAxis);
+        Movement(horizontal);
     }
 
     private void FixedUpdate()
     {
         DoRun();
-        float horizontal = UnityEngine.Input.GetAxis(xAxis);
-        Movement(horizontal);
     }
 
     private void GetInputs()
@@ -98,14 +98,6 @@ public class PlayerMovement : BaseCharacter, IDamageable
         {
             Animator.SetBool("IdleBlock", false);
             shield.SetActive(false);
-        }
-    }
-    public virtual void ApplyDamage(float damage)
-    {
-        CurrentHealth -= damage;
-        if (CurrentHealth <= 0)
-        {
-            Die();
         }
     }
 }
