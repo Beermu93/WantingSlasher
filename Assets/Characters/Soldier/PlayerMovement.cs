@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Windows;
 
 public class PlayerMovement : BaseCharacter
@@ -13,6 +14,12 @@ public class PlayerMovement : BaseCharacter
     private float moveOnX = 0f;
     private bool jump = false;
     [SerializeField] private GameObject shield;
+    [SerializeField] private Image healthBar;
+
+    private void Start()
+    {
+        health = 25f;
+    }
 
     private void Update()
     {
@@ -99,5 +106,21 @@ public class PlayerMovement : BaseCharacter
             Animator.SetBool("IdleBlock", false);
             shield.SetActive(false);
         }
+    }
+
+    public override void ApplyDamage(float damage)
+    {
+        CurrentHealth -= damage;
+        UpdateHealthBar();
+        if (CurrentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void UpdateHealthBar()
+    {
+        var fillAmount = CurrentHealth / health; 
+        healthBar.fillAmount = fillAmount;
     }
 }

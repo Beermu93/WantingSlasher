@@ -78,9 +78,7 @@ public class SoldierCombat : MonoBehaviour
         {
             if (obj.CompareTag("Enemy"))
             {
-                obj.transform.GetComponent<IDamageable>().ApplyDamage(combo[2].damage);
-                //obj.transform.GetComponent<FlyingEnemy>().ApplyDamage(combo[2].damage);
-                //obj.transform.GetComponent<SlimeEnemy>().ApplyDamage(combo[2].damage);
+                obj.transform.GetComponent<IDamageable>().ApplyDamage(combo[1].damage);
             }
         }
     }
